@@ -1,50 +1,100 @@
-# React + TypeScript + Vite
+# Movie Locations in San Francisco Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a web application that displays movie filming locations on a map in San Francisco. The app uses React, Leaflet, and OpenStreetMap to visualize the locations where movies were filmed. Users can filter the displayed locations using an autocomplete search with three filters: by movie title, by year, and by location. These filters can be combined for a more precise search.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive Map**: Displays movie filming locations in San Francisco using **Leaflet** and **OpenStreetMap**.
+- **Search Filters**: Allows users to filter locations by:
+  - **Movie Title**: Search by the movie title.
+  - **Year**: Filter the locations by the year of the movie's release.
+  - **Location**: Filter by the filming location (i.e., the geographic location of where the movie was filmed).
+- **Autocomplete Search**: Filters use an autocomplete search that suggests possible matches as users type.
+- **Data Fetching and Geocoding**:
+  - A Python script fetches movie data from the [San Francisco Film Locations API](https://data.sfgov.org/resource/yitu-d5am.json).
+  - The app geocodes movie locations using **Nominatim** to get latitude and longitude for each movie (where possible).
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Frontend**:
+  - **React**: JavaScript library for building the user interface.
+  - **Leaflet**: JavaScript library for interactive maps.
+  - **OpenStreetMap**: Open-source map tiles for displaying movie locations.
+  - **React-Leaflet**: React components for integrating Leaflet with React.
+- **Backend**:
+  - **Python Script**: Used to fetch movie data from the API and geocode locations using Nominatim.
 
-- Configure the top-level `parserOptions` property like this:
+## Steps to Run the Application Locally
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Frontend Setup
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Clone the repository
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   ```bash
+   git clone https://github.com/yourusername/sf-movies.git
+   cd sf-movie-locations
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+2. Copy environment example file
+
+   ```bash
+   cp .env.example .env
+   ```
+
+3. Fill in the SF Movies API token in the `.env` file
+
+4. Install dependencies
+
+   ```bash
+   npm install
+   ```
+
+5. Start the development server
+   ```bash
+   npm run dev
+   ```
+
+### Backend Python Script Setup (Optional)
+
+1. Create a virtual environment
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate.bat`
+   ```
+
+2. Install required dependencies
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+#### Why Run the Backend Script?
+
+The Python script serves two primary purposes:
+
+- Fetches movie location data from the San Francisco Government API
+- Geocodes movie locations using Nominatim for precise geographical mapping
+
+You might want to run this script independently to:
+
+- Refresh or update the movie locations dataset
+- Perform additional data processing
+- Investigate geocoding results
+- Use as a standalone data retrieval tool
+
+3. Run the Python script
+   ```bash
+   python fetch_movie_locations.py
+   ```
+
+## Environment Variables
+
+Refer to `.env.example` for required configuration:
+
+- `API_TOKEN`: API token for San Francisco Open Data Portal
+
+## Live Demo
+
+You can view the live application at the following link:
+
+[Deployed Application](https://your-deployed-app-link.com)
