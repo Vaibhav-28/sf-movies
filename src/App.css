@@ -1,0 +1,129 @@
+.movie-location-filter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  z-index: 10000;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-with-suggestions {
+  flex: 1;
+  position: relative;
+}
+
+.filter-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.suggestions-list::-webkit-scrollbar {
+  /* Width of the entire scrollbar */
+  width: 10px;
+}
+
+.suggestions-list::-webkit-scrollbar-track {
+  /* Background of the scrollbar track */
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.suggestions-list::-webkit-scrollbar-thumb {
+  /* Styling for the scrollbar handle */
+  background: #888;
+  border-radius: 10px;
+}
+
+.suggestions-list::-webkit-scrollbar-thumb:hover {
+  /* Color change on hover */
+  background: #555;
+}
+
+/* Firefox scrollbar styling */
+.suggestions-list {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+.suggestion-item:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reset-filter-btn {
+  padding: 10px 15px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reset-filter-btn:hover {
+  background-color: #d32f2f;
+}
+
+.results-count {
+  text-align: center;
+  color: black;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  font-size: 0.9em;
+}
+
+@media (max-width: 600px) {
+  .filter-row {
+    flex-direction: column;
+  }
+}
