@@ -97,4 +97,4 @@ Refer to `.env.example` for required configuration:
 
 You can view the live application at the following link:
 
-[Deployed Application](https://your-deployed-app-link.com)
+[Deployed Application](https://vaibhav-28.github.io/sf-movies/)
