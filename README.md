@@ -84,7 +84,7 @@ You might want to run this script independently to:
 
 3. Run the Python script
    ```bash
-   python fetch_movie_locations.py
+   python geocode_movies.py
    ```
 
 ## Environment Variables
